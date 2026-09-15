@@ -13,3 +13,22 @@ I DETTA FILEN: Skapa några kurser och några studerande, anmäl och avanmäl de
 skriv ut med RollCall() och Schedule() så att det syns att båda hållen hänger ihop och att reglerna
 ovan fungerar (t.ex. att en full kurs säger nej, och att dubbelanmälan inte ger dubbletter)
 */
+
+Student aythami = new ("Aythami", "Yanez");
+Student fede = new ("Federico", "Diaz");
+Student marco = new ("Marcos", "Marrero");
+
+
+Course matte = new ("Matte 1b", 5);
+Course eng = new ("Engelska 5", 5);
+Course sve = new ("Svenska 2", 5);
+
+
+
+Console.WriteLine($"{aythami.FullName}");
+Console.WriteLine($"{fede.FullName}");
+Console.WriteLine($"{marco.FullName}");
+Console.WriteLine($"{matte.NameOfCourse}");
+Console.WriteLine($"{eng.NameOfCourse}");
+Console.WriteLine($"{sve.NameOfCourse}");
+

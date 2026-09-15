@@ -10,16 +10,22 @@ class Student(string studentName, string studentLast)
     public string StudentName = studentName;
     public string StudentLast = studentLast;
 
+    public string FullName = studentName + " " + studentLast;
 
-    public static string Join()
+    public List <Course> Courses = [];
+    
+
+
+
+    public static void Join()
+    {
+    
+    }
+    public static void Leave()
     {
         
     }
-    public static string Leave()
-    {
-        
-    }
-    public static string Schedule()
+    public static void Schedule()
     {
         
     }

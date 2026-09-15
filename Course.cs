@@ -5,28 +5,28 @@
 //En toString() som ger tex. Matematik(2/5 platser)
 using System.Runtime.CompilerServices;
 
-class Course() //This will be the class structure for Course class
+class Course(string nameOfCourse, int maxSeats) //This will be the class structure for Course class
 {
     public string NameOfCourse = nameOfCourse;
     public int MaxSeats = maxSeats;
-    public List<string> students = [];
+    public List<Student> Students = [];
 
-    public static string Enroll(string Student)
+    public static void Enroll(string Student) //add student in a course
     {
         
     }
 
-    public static string Remove(string Student)
+    public static void Remove(string Student)
     {
         
     }
 
-    public static string RollCall(string Student)
+    public static void RollCall(string Student)
     {
         
     }
     public override string ToString()
     {
-        return $"{NameOfCourse} ({students.Count}/{MaxSeats} platser)";
+        return $"{NameOfCourse} ({Students.Count}/{MaxSeats} platser)";
     }
 }
