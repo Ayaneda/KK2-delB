@@ -5,7 +5,7 @@
 //ToString(): med den studerande namn
 
 
-class Student(string studentName, string studentLast)
+class Student(string studentName, string studentLast) //Using primary constructor
 {
     public string StudentName = studentName;
     public string StudentLast = studentLast;
@@ -17,20 +17,34 @@ class Student(string studentName, string studentLast)
 
 
 
-    public void Join(Course newcourse)
+    public void Join(Course newCourse) //This is the method to join a course.
     {
-        if (!courses.Contains(newcourse))
+        if (!courses.Contains(newCourse) && newCourse.Students.Count < newCourse.MaxSeats )
         {
-            courses.Add(newcourse);
+            courses.Add(newCourse);
+            newCourse.Students.Add(this);
+            Console.WriteLine($"{FullName} has been registered in {newCourse.NameOfCourse}");
+        }
+
+    }
+    public void Leave(Course leaveCourse)
+    {
+        {
+        if (courses.Contains(leaveCourse) )
+        {
+            courses.Remove(leaveCourse);
+            leaveCourse.Students.Remove(this);
+            Console.WriteLine($"{FullName} has been unregistered from {leaveCourse.NameOfCourse}");
         }
     }
-    public void Leave()
-    {
-        
     }
     public void Schedule()
     {
-        
+        Console.WriteLine($"{FullName} is assisting: ");
+        foreach (Course c in courses)
+        {
+            Console.WriteLine($"{c}");
+        }
     }
 
     public override string ToString()
