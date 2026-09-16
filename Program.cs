@@ -32,3 +32,13 @@ Console.WriteLine($"{matte.NameOfCourse}");
 Console.WriteLine($"{eng.NameOfCourse}");
 Console.WriteLine($"{sve.NameOfCourse}");
 
+aythami.Join(matte);
+matte.RollCall();
+aythami.Schedule();
+aythami.Join(eng);
+eng.RollCall();
+aythami.Schedule();
+aythami.Leave(matte);
+matte.RollCall();
+aythami.Schedule();
+

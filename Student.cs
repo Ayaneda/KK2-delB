@@ -21,8 +21,19 @@ class Student(string studentName, string studentLast) //Using primary constructo
     {
         if (!courses.Contains(newCourse))
         {
-            courses.Add(newCourse);
-            Console.WriteLine($"{FullName} has been registered in {newCourse.NameOfCourse}");
+            bool maxSeatsControl = !courses.Contains(newCourse);
+            if (maxSeatsControl)
+            {
+                newCourse.Students.Add(this);
+                courses.Add(newCourse);
+                Console.WriteLine($"{FullName} has been registered in {newCourse.NameOfCourse}");
+            }
+            
+        }
+        else
+        {
+            Console.WriteLine($"{this} has been remove from the {newCourse} course.");
+
         }
 
     }
@@ -31,6 +42,7 @@ class Student(string studentName, string studentLast) //Using primary constructo
         {
         if (courses.Contains(leaveCourse))
         {
+            leaveCourse.Students.Remove(this);
             courses.Remove(leaveCourse);
             Console.WriteLine($"{FullName} has been unregistered from {leaveCourse.NameOfCourse}");
         }

@@ -3,6 +3,7 @@
 //Method: Remove(student): ta bort student.
 //Method: RollCall(): skriver ut alla studerande i kursen.
 //En toString() som ger tex. Matematik(2/5 platser)
+using System.Formats.Asn1;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -18,14 +19,16 @@ class Course(string nameOfCourse, int maxSeats) //This will be the class structu
         {
             if (Students.Count < MaxSeats)
             {
+                newStudent.Join(this);    
                 Students.Add(newStudent);
                 Console.WriteLine($"The {newStudent} have been registered.");
             }
+    
             
         }
         else
         {
-            Console.WriteLine($"{newStudent} is already or there was any available spots.");
+            Console.WriteLine($"{newStudent} is already or there wasn't any available spots.");
         }    
     }
 
@@ -33,12 +36,14 @@ class Course(string nameOfCourse, int maxSeats) //This will be the class structu
     {
         if (Students.Contains(newStudent))
         {
+            newStudent.Leave(this);
             Students.Remove(newStudent);
             Console.WriteLine($"{newStudent} has been remove from the {this} course.");
         }
+        
     }
 
-    public void RollCall(Student Student)
+    public void RollCall()
     {
         Console.WriteLine($"In {this} are assisting the following students: ");
         foreach (Student s in Students)
