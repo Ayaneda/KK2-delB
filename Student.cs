@@ -19,10 +19,9 @@ class Student(string studentName, string studentLast) //Using primary constructo
 
     public void Join(Course newCourse) //This is the method to join a course.
     {
-        if (!courses.Contains(newCourse) && newCourse.Students.Count < newCourse.MaxSeats )
+        if (!courses.Contains(newCourse))
         {
             courses.Add(newCourse);
-            newCourse.Students.Add(this);
             Console.WriteLine($"{FullName} has been registered in {newCourse.NameOfCourse}");
         }
 
@@ -30,10 +29,9 @@ class Student(string studentName, string studentLast) //Using primary constructo
     public void Leave(Course leaveCourse)
     {
         {
-        if (courses.Contains(leaveCourse) )
+        if (courses.Contains(leaveCourse))
         {
             courses.Remove(leaveCourse);
-            leaveCourse.Students.Remove(this);
             Console.WriteLine($"{FullName} has been unregistered from {leaveCourse.NameOfCourse}");
         }
     }
