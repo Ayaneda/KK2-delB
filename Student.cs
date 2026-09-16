@@ -12,20 +12,23 @@ class Student(string studentName, string studentLast)
 
     public string FullName = studentName + " " + studentLast;
 
-    public List <Course> Courses = [];
+    public List <Course> courses = [];
     
 
 
 
-    public static void Join()
+    public void Join(Course newcourse)
     {
-    
+        if (!courses.Contains(newcourse))
+        {
+            courses.Add(newcourse);
+        }
     }
-    public static void Leave()
+    public void Leave()
     {
         
     }
-    public static void Schedule()
+    public void Schedule()
     {
         
     }

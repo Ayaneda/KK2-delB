@@ -11,17 +11,17 @@ class Course(string nameOfCourse, int maxSeats) //This will be the class structu
     public int MaxSeats = maxSeats;
     public List<Student> Students = [];
 
-    public static void Enroll(string Student) //add student in a course
+    public void Enroll(string Student) //add student in a course
     {
         
     }
 
-    public static void Remove(string Student)
+    public void Remove(string Student)
     {
         
     }
 
-    public static void RollCall(string Student)
+    public void RollCall(string Student)
     {
         
     }
