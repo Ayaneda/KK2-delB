@@ -86,4 +86,7 @@ matte.RollCall();
  matte.RollCall();
  fede.Schedule();
  marco.Schedule();
-
+ 
+//Check if using leave when is not attending the course already
+ Console.WriteLine("\nCheck if using leave when is not attending the course already\n-------------------");
+matte.Remove(marco);
