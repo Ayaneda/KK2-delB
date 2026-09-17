@@ -7,51 +7,63 @@ using System.Formats.Asn1;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-class Course(string nameOfCourse, int maxSeats) //This will be the class structure for Course class
+class Course(string nameOfCourse, int maxSeats) //This will be the class structure for Course class using primary contructors.
 {
-    public string NameOfCourse = nameOfCourse;
-    public int MaxSeats = maxSeats;
-    public List<Student> Students = [];
-
-    public void Enroll(Student newStudent) //add student in a course
-    {
-        if (!Students.Contains(newStudent))
-        {
-            if (Students.Count < MaxSeats)
-            {
-                newStudent.Join(this);    
-                Students.Add(newStudent);
-                Console.WriteLine($"The {newStudent} have been registered.");
-            }
     
-            
-        }
-        else
+    public string NameOfCourse = nameOfCourse;  //Name of the course
+    public int MaxSeats = maxSeats; //Limiting spots for the course
+    public List<Student> Students = []; //list to save students in course
+
+    public void Enroll(Student newStudent) 
+    //add student in a course. If-syntax to give rules. 
+    //Giving feedbacks message for easy tracking of what is happening  
+    {
+        if (Students.Contains(newStudent)) //checking in the list if the students is already in the course.
         {
-            Console.WriteLine($"{newStudent} is already or there wasn't any available spots.");
+            Console.WriteLine($"{newStudent} is already attending {this}");
+        }
+        else if (Students.Count >= MaxSeats) //checking max spots in the course
+        {
+            Console.WriteLine($"Sorry {newStudent}, {this} doesn't have more spots.");
+        }   
+        
+        else //if everything is check, then student can join this
+        {
+            newStudent.Join(this);    //I use the method of student class to add course/student in both list so they are sync 
+            Console.WriteLine($"{newStudent} have been registered.");
         }    
     }
 
-    public void Remove(Student newStudent)
+    public void Remove(Student newStudent)  //Method to remove student from a course using the method from student class
     {
-        if (Students.Contains(newStudent))
+        if (Students.Contains(newStudent)) //If there is a student attending this course, then 
         {
             newStudent.Leave(this);
-            Students.Remove(newStudent);
             Console.WriteLine($"{newStudent} has been remove from the {this} course.");
+        }
+        else  //If there isn't any student, feedback.
+        {
+            Console.WriteLine($"{newStudent} is not attending {this}.");
         }
         
     }
 
-    public void RollCall()
+    public void RollCall() // Just a record for how many are attending.
     {
-        Console.WriteLine($"In {this} are assisting the following students: ");
-        foreach (Student s in Students)
+        if(Students.Count == 0) //If there isn't any student- feedback.
         {
-            Console.WriteLine($"{s}");
+            Console.WriteLine($"{this} doesn't have any students yet.");
+        }
+        else  //if there is any, it gives the names of students.
+        {
+            Console.WriteLine($"{this} has the following students: ");
+            foreach (Student s in Students)
+            {
+                Console.WriteLine($"{s}");
+            }
         }
     }
-    public override string ToString()
+    public override string ToString() //message when obj is called.
     {
         return $"{NameOfCourse} ({Students.Count}/{MaxSeats} platser)";
     }
