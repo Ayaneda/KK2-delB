@@ -39,7 +39,8 @@ class Course(string nameOfCourse, int maxSeats) //This will be the class structu
     {
         if (Students.Contains(newStudent)) //If there is a student attending this course, then 
         {
-            newStudent.Leave(this);
+            newStudent.courses.Remove(this);
+            Students.Remove(newStudent);
             Console.WriteLine($"{newStudent} has been remove from the {this} course.");
         }
         else  //If there isn't any student, feedback.
