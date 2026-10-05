@@ -29,7 +29,8 @@ class Course(string nameOfCourse, int maxSeats) //This will be the class structu
         
         else //if everything is check, then student can join this
         {
-            newStudent.Join(this);    //I use the method of student class to add course/student in both list so they are sync 
+            Students.Add(newStudent); //Adding this student in the list of course class.
+            newStudent.courses.Add(this);     //Adding course in the course list
             Console.WriteLine($"{newStudent} have been registered.");
         }    
     }
